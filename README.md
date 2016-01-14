@@ -1,5 +1,5 @@
 
-application created by [ThinkJS](http://www.thinkjs.org)
+application basedon by [ThinkJS](http://www.thinkjs.org)
 
 ## install dependencies
 
