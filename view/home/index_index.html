@@ -1,0 +1,23 @@
+{% extends "./layout.html" %}
+{% block customerCSS %}
+<link rel="stylesheet" href="/combo?path={{cssArray}}" />
+{% endblock %}
+{% block BodyContent %}
+{{componentHtml | safe}}
+
+{% endblock %}
+{% block customerJS %}
+<script type="text/javascript" src="/combo?path={{jsArray}}"></script>
+<script type="text/javascript">
+$(function(){
+  var str='{{compArray|safe}}';
+  var map={
+        "titleComponent":"title",
+        "textComponent":"text"
+      }
+  $.each(JSON.parse(str),function(i,item){
+    window.Ncomponents[map[item.componentname]].bindEvents(item.domid);
+  })
+});
+</script>
+{% endblock %}

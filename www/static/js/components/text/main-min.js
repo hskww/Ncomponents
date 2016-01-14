@@ -1,0 +1,1 @@
+window.Ncomponents=window.Ncomponents||{},function(){var n={};n.text={bindEvents:function(n){console.log(n)}},$.extend(window.Ncomponents,n)}();

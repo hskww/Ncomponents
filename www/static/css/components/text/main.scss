@@ -1,0 +1,13 @@
+@import "../../mixins";
+
+
+.component-paragraph{
+	padding: px2rem(5) px2rem(40) px2rem(40);
+	line-height: px2rem(40);
+	color: #999;
+	font-size: px2rem(28);
+	background-color: #fff;
+	margin-top: px2rem(20);
+	max-height: 100%;
+	@include background-size( cover);
+}

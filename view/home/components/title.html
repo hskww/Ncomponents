@@ -1,0 +1,21 @@
+<div class="component-title"  id="{{ data.anchor_name }}" style="margin-top:{{ data.margin | xrem}};">
+    {% if data.more_url %}
+    <div class="single" >
+        <h2 >{{ data.title }}</h2>
+        <div class="more"><a href="{{ data.more_url }}">{{ data.more_name if data.more_name else "更多"  }}</a></div>
+    </div>
+    {% else %}
+    <div class="align {{data.align}}" >
+        <h2 >
+            {% if data.align =="center" %}
+            <i class='left'></i>
+            {% endif %}
+        {{data.title }}
+         {% if data.align=="center" %}
+            <i class='right'></i>
+        {% endif %}
+           
+        </h2>
+    </div>
+    {%endif%}
+</div>

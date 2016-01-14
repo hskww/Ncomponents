@@ -1,0 +1,95 @@
+@import '../../mixins';
+
+.component-title{
+	width: 100%;
+	height: px2rem(90);
+	background-color:#fff;
+	margin-top: px2rem(20);
+	text-align: center;
+	background-repeat:no-repeat;
+	background-position:center center;
+	background-size:cover;
+	overflow:hidden;
+	.single{
+		width: 100%;
+		height: px2rem(90);
+		line-height: px2rem(90);
+		font-size: 64%;
+		h2{
+			
+			text-align: left;
+			color: #555;
+			float: left;
+			padding-left: px2rem(30);
+		}
+		.more{
+			float: right;
+			a{
+				display: block;
+				color: #aaa;
+				text-decoration: none;
+				line-height: px2rem(90);
+				font-size: 84%;
+				padding: 0 px2rem(30);
+				&:visited,&:hover,&:link{
+					color: #aaa;
+					text-decoration: none;
+				}
+			}
+		}
+	}
+	.align{
+		text-align: center;
+		font-size: 64%;
+		color: #555;
+		line-height: px2rem(90);
+		padding:0 px2rem(30);
+		position: relative;
+		&.left{
+			text-align: left;
+		}
+		&.right{
+			text-align: right;
+		}
+		&.center h2{
+			display: inline-block;
+			position: relative;
+            font-size: px2rem(30);
+			i{
+				display: inline-block;
+				position:relative;
+				width: px2rem(50);
+				height:1px;
+				background-color: #999;
+				vertical-align: middle;
+				margin-top:px2rem(-6);
+				&.left{
+					margin-right: px2rem(20);
+				}
+				&.right{
+					margin-left: px2rem(20);
+				} 
+			}
+			/*
+			&:before,&:after{
+				content: '';
+				width: px2rem(50);
+				height: 1px;
+				position: absolute;
+				top: 50%;
+				margin-top: -1px;
+				background-color: #999;
+				
+			}
+			&:before{
+				left: 0;
+				margin-left: px2rem(-80);
+			}
+			&:after{
+				right: 0;
+				margin-right: px2rem(-80);
+			}
+			*/
+		}
+}
+}

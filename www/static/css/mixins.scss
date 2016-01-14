@@ -1,0 +1,389 @@
+//the width of the design , you can change it
+$designWidth : 750;
+$redv: #ff6666;
+
+//transform px to rem;
+@function px2rem( $px ){
+	//320*50/750/20
+	@return $px*320/$designWidth/20 + rem;
+}
+
+@mixin flexbox{
+	display: -webkit-box; //old
+	display: -webkit-flex; //new
+	display: flex; //new
+}
+
+@mixin flex( $value ){
+	-webkit-box-flex: $value;
+	-webkit-flex: $value;
+	flex: $value;
+}
+
+@mixin flex-order( $order ){
+	-webkit-box-ordinal-group: $order; // old
+	-webkit-order: $order; // new
+	order: $order; // new
+}
+
+
+
+@mixin boxflex( $value ){
+	-webkit-box-flex: $value;
+	-webkit-flex: $value;
+}
+
+@mixin flex-direction($direction){
+	@if $direction == column{
+		-webkit-flex-direction:vertical;
+		-webkit-flex-direction:column;
+		flex-direction:column;
+	}@else{
+		-webkit-flex-direction:horizontal;
+		-webkit-flex-direction:row;
+		flex-direction:row;
+	}
+ }
+@mixin box-hcvm{
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-pack: center;
+  -webkit-box-align: center;
+  
+  display: box;
+  box-orient: horizontal;
+  box-pack: center;
+  box-align: center;
+}
+
+@mixin animation($value) {
+	-webkit-animation: $value;
+	animation: $value;
+}
+@mixin keyframes($name) {
+@-webkit-keyframes #{$name} {
+@content; 
+  }
+  /*
+@-moz-keyframes #{$name} {
+@content;
+  }
+@-ms-keyframes #{$name} {
+@content;
+  }
+  */
+@keyframes #{$name} {
+@content;
+  } 
+}
+
+
+
+@mixin appearance($value) {
+	-webkit-appearance: $value;
+	appearance: $value;	
+}
+@mixin backface-visibility($value:visible) {
+	-webkit-backface-visibility: $value;;
+	backface-visibility: $value;	
+}
+@mixin background-clip($mode: border-box) {
+	$xmode: null;
+
+	@if ($mode == border-box) {
+		$xmode: border;
+	}
+
+	@if ($mode == padding-box) {
+		$xmode: padding;
+	}
+
+	@if ($mode == content-box) {
+		$xmode: content;
+	}
+
+	-webkit-background-clip: $xmode;
+	background-clip: $mode; 	
+}
+@mixin background-origin($mode: border-box) {
+	$xmode: null;
+
+	@if ($mode == border-box) {
+		$xmode: border;
+	}
+
+	@if ($mode == padding-box) {
+		$xmode: padding;
+	}
+
+	@if ($mode == content-box) {
+		$xmode: content;
+	}
+
+	-webkit-background-origin: $xmode;
+	background-origin: $mode; 	
+}
+@mixin background-retina($img_1x, $img_2x, $width_1x, $height_1x) {
+	background-image: url($img_1x);
+
+	@media only screen and (-webkit-min-device-pixel-ratio: 2),
+	only screen and (min-device-pixel-ratio: 2),
+	only screen and (min-resolution: 192dpi),
+	only screen and (min-resolution: 2dppx) {
+		background-image: url($img_2x);
+		@include background-size($width_1x $height_1x);
+	}	
+}
+@mixin background-size($size) {
+	-webkit-background-size: $size;
+	background-size: $size;
+}
+@mixin border-radius($radius, $direction:all) {
+	@if ($direction == all) {
+	    -webkit-border-radius: $radius;
+	    border-radius: $radius;
+	}
+
+	@if ($direction == top) {
+	    -webkit-border-radius: $radius $radius 0 0;
+	    border-radius: $radius $radius 0 0;
+	}
+
+	@if ($direction == right) {
+	    -webkit-border-radius: 0 $radius $radius 0;
+	    border-radius: 0 $radius $radius 0;
+	}
+
+	@if ($direction == bottom) {
+	    -webkit-border-radius: 0 0 $radius $radius;
+	    border-radius: 0 0 $radius $radius;
+	}
+
+	@if ($direction == left) {
+	    -webkit-border-radius: $radius 0 0 $radius;
+	    border-radius: $radius 0 0 $radius;
+	}
+}
+
+@mixin border-triangle($borderWidth, $borderColor, $direction) {
+	$default-border-style: solid;
+
+	width: 0;
+	height: 0;
+	overflow: hidden;
+	border-width: $borderWidth;
+	border-style: $default-border-style;
+	_border-style: dashed;
+	border-color: transparent;
+
+	@if ($direction == top) {
+		border-bottom-color: $borderColor;
+		_border-bottom-style: $default-border-style;
+	}
+
+	@if ($direction == right) {
+		border-left-color: $borderColor;
+		_border-left-style: $default-border-style;
+	}
+
+	@if ($direction == bottom) {
+		border-top-color: $borderColor;
+		_border-top-style: $default-border-style;
+	}
+
+	@if ($direction == left) {
+		border-right-color: $borderColor;
+		_border-right-style: $default-border-style;
+	}
+
+	@if ($direction == topleft) {
+		border-top-color: $borderColor;
+		border-left-color: $borderColor;
+		_border-top-style: $default-border-style;
+		_border-left-style: $default-border-style;
+	}
+
+	@if ($direction == topright) {
+		border-top-color: $borderColor;
+		border-right-color: $borderColor;
+		_border-top-style: $default-border-style;
+		_border-right-style: $default-border-style;
+	}
+
+	@if ($direction == bottomleft) {
+		border-bottom-color: $borderColor;
+		border-left-color: $borderColor;
+		_border-bottom-style: $default-border-style;
+		_border-left-style: $default-border-style;
+	}
+
+	@if ($direction == bottomright) {
+		border-bottom-color: $borderColor;
+		border-right-color: $borderColor;
+		_border-bottom-style: $default-border-style;
+		_border-right-style: $default-border-style;
+	}
+}
+@mixin box-shadow($param) {
+ 	-webkit-box-shadow: $param; 
+  	        box-shadow: $param;	
+}
+@mixin box-sizing($model) {
+	-webkit-box-sizing: $model;
+	        box-sizing: $model;
+}
+@mixin clearfix() {
+	&:before,
+	&:after {
+		content: " ";
+		display: table;
+	}
+	&:after {
+		clear: both;
+	}
+	*zoom: 1;
+}
+@mixin font-face($fontName, $noSuffixFontUrl) {
+	@font-face {
+	  font-family: "#{$fontName}";
+	  src: url("#{$noSuffixFontUrl}.eot");
+	  src: url("#{$noSuffixFontUrl}.eot?#iefix") format("embedded-opentype"),
+	       url("#{$noSuffixFontUrl}.woff") format("woff"),
+	       url("#{$noSuffixFontUrl}.ttf")  format("truetype"),
+	       url("#{$noSuffixFontUrl}.svg#svgFontName") format("svg");
+	}	
+}
+@mixin grayscale() {
+	/* for Chrome, Safari, Opera */
+	-webkit-filter: grayscale(100%);
+	/* CSS3 standard usage */
+    filter: grayscale(100%);
+    /* for FF, data-uri generate from gray.svg */
+    filter: url('data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgICA8ZmlsdGVyIGlkPSJncmF5c2NhbGUiPgogICAgICAgIDxmZUNvbG9yTWF0cml4IHR5cGU9Im1hdHJpeCIgdmFsdWVzPSIwLjMzMzMgMC4zMzMzIDAuMzMzMyAwIDAgMC4zMzMzIDAuMzMzMyAwLjMzMzMgMCAwIDAuMzMzMyAwLjMzMzMgMC4zMzMzIDAgMCAwIDAgMCAxIDAiLz4KICAgIDwvZmlsdGVyPgo8L3N2Zz4=#grayscale');
+    /* for IE6~9 */
+	filter: gray;
+}
+@mixin hyphens($mode:auto) {
+	word-break: break-all;
+	word-break: break-word;
+	-webkit-hyphens: $mode;
+	hyphens: $mode;	
+}
+@mixin inline-block() {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+}
+@mixin linear-gradient($arguments...) {
+
+	@if (length($arguments) == 2) {
+		$arguments: join(unquote("to bottom"), $arguments, comma);
+	}
+
+	$map: ("to top": bottom, 
+			"to right": left, 
+			"to bottom": top, 
+			"to left": right,
+			"0deg": bottom,
+			"90deg": left,
+			"180deg": top,
+			"270deg": right);
+
+	$iemap: ("to top": 0, 
+			"to right": 1, 
+			"to bottom": 0, 
+			"to left": 1,
+			"0deg": 0,
+			"90deg": 1,
+			"180deg": 0,
+			"270deg": 1);
+
+	$direction: inspect(nth($arguments, 1));
+	$colorlist: str-slice(inspect($arguments), str-length($direction) + 2);
+	$wkdirection: map-get($map, $direction);
+	$iedirection: map-get($iemap, $direction);
+	$startColor: null;
+	$endColor: null;
+
+	@if ($wkdirection == top) {
+		$startColor: nth(nth($arguments, 2), 1);
+		$endColor: nth(nth($arguments, 3), 1);
+	} @else if ($wkdirection == left) {
+		$startColor: nth(nth($arguments, 2), 1);
+		$endColor: nth(nth($arguments, 3), 1);
+	} @else if ($wkdirection == bottom) {
+		$startColor: nth(nth($arguments, 3), 1);
+		$endColor: nth(nth($arguments, 2), 1);
+	} @else if ($wkdirection == right) {
+		$startColor: nth(nth($arguments, 3), 1);
+		$endColor: nth(nth($arguments, 2), 1);
+	}
+	
+    background: -webkit-linear-gradient($wkdirection, $colorlist);
+    background: linear-gradient($arguments);
+    filter: unquote("progid:DXImageTransform.Microsoft.gradient(startcolorstr=#{$startColor},endcolorstr=#{$endColor},gradientType=#{$iedirection})");
+}
+@mixin min-height($height) {
+	min-height: $height;
+	_height: $height;
+}
+@mixin opacity($opacity) {
+	$opacityIE: $opacity * 100;
+	-ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=$opacityIE); // IE 8 & 9
+	filter: alpha(opacity=$opacityIE); // IE 6 & 7
+	opacity: $opacity;
+}
+@mixin perspective-origin($origin:50% 50%) {
+	-webkit-perspective-origin: $origin;
+	perspective-origin: $origin;
+}
+@mixin perspective($value:none) {
+	-webkit-perspective: $value;
+	perspective: $value;
+}
+@mixin placeholder($color) {
+	&::-webkit-input-placeholder {
+		color: $color; 
+	}
+}
+@mixin radial-gradient($arguments...) {
+    background: -webkit-radial-gradient($arguments);
+    background: radial-gradient($arguments);	
+}
+@mixin text-overflow($cutway: clip) {
+	overflow: hidden;
+  	text-overflow: $cutway;
+  	white-space: nowrap;
+}
+@mixin transform-origin($value: 50% 50% 0) {
+	-webkit-transform-origin: $value;
+	transform-origin: $value;
+}
+@mixin transform-style($value:flat) {
+	-webkit-transform-style: $value;
+	transform-style: $value;
+}
+@mixin transform($value) {
+	-webkit-transform: $value;
+	transform: $value;		
+}
+@mixin transition($value) {
+    -webkit-transition: $value;
+    transition: $value;		
+}
+@mixin user-select($mode:text) {
+	-webkit-user-select: $mode;
+	user-select: $mode;  	
+}
+
+@mixin box-hcvm{
+	display: -webkit-box;
+	-webkit-box-orient: horizontal;
+	-webkit-box-pack: center;
+	-webkit-box-align: center;
+
+	display: box;
+	box-orient: horizontal;
+	box-pack: center;
+	box-align: center;
+}
