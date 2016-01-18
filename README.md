@@ -1,5 +1,5 @@
 
-application based on by [ThinkJS](http://www.thinkjs.org)
+application based on  [ThinkJS](http://www.thinkjs.org)
 ## install node [Node](https://nodejs.org/en/)
 
 
