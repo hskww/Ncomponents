@@ -36,10 +36,11 @@ gulp.task('watch-components-css', cb => {
 gulp.task("components-js",() => {
   function compile(src, dist) {
     return  src
-      .pipe($.uglify())
+      //.pipe($.uglify())
       .pipe($.minify())
       .pipe(gulp.dest(dist))
       .pipe($.size({title: 'components-js'}));
+
   }
 
   return merge(

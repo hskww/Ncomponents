@@ -1,7 +1,6 @@
 'use strict';
 
 import Base from './base.js';
-
 import fs from 'fs';
 export default class extends Base {
   /*
@@ -51,7 +50,7 @@ export default class extends Base {
 		http.type('text/css');
 	}
 	let expires = new Date();
-	let maxage=60*60*24;
+	let maxage=60*60*24*30;
     expires.setTime(expires.getTime() + maxage*1000);
     response.setHeader("Expires", expires.toUTCString());
     response.setHeader("Cache-Control", "max-age=" + maxage);

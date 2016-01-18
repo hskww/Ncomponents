@@ -1,18 +1,18 @@
-<div class="component-title"  id="{{ data.anchor_name }}" style="margin-top:{{ data.margin | xrem}};">
+<div class="component-title"  id="{{ data.anchor_name }}" style="margin-top:{{ data.margin | xrem}}; background-image:url({{data.bg_image }}); background-color:{{data.bgcolor}}">
     {% if data.more_url %}
     <div class="single" >
-        <h2 >{{ data.title }}</h2>
+        <h2 style="color:{{data.font_color}}">{{ data.title }}</h2>
         <div class="more"><a href="{{ data.more_url }}">{{ data.more_name if data.more_name else "更多"  }}</a></div>
     </div>
     {% else %}
     <div class="align {{data.align}}" >
-        <h2 >
+        <h2 style="color:{{data.font_color}}">
             {% if data.align =="center" %}
-            <i class='left'></i>
+            <i class='left' style="background-color:{{data.font_color}}"></i>
             {% endif %}
         {{data.title }}
          {% if data.align=="center" %}
-            <i class='right'></i>
+            <i class='right' style="background-color:{{data.font_color}}"></i>
         {% endif %}
            
         </h2>
