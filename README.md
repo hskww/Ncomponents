@@ -1,12 +1,5 @@
 
-application based on  [ThinkJS](http://www.thinkjs.org)
-## install node [Node](https://nodejs.org/en/)
-
-
-## install thinkjs
-```
-npm install thinkjs@2 -g --verbose
-```
+application created by [ThinkJS](http://www.thinkjs.org)
 
 ## install dependencies
 
@@ -20,4 +13,10 @@ npm install
 npm start
 ```
 
+## deploy with pm2
 
+use pm2 to deploy app on production envrioment.
+
+```
+pm2 startOrReload pm2.json
+```

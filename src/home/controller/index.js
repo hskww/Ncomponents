@@ -27,7 +27,7 @@ export default class extends Base {
             }, {
                 componet_id: "472",
                 componet_info_type: "textComponent",
-                props: {
+                props: { 
                     anchor_name: "anchor_name472",
                     bg_color: "",
                     bg_image: "http://d03.res.meilishuo.net/pic/_o/66/58/a871ab7fc3acf94ad9b668b29de0_750_595.cf.jpg",
@@ -63,18 +63,25 @@ export default class extends Base {
         var jsArray=[];
         var cssArray=[];
         var componentHtml = "";
-        
+        var _array=[];
         for (var i = 0; i < pageData.components.length; i++) {
         	var data= pageData.components[i];
         	that.assign('data', data.props);
-            componentHtml += await this.fetch("components/"+nameMap[data.componet_info_type]+".html");
-            compArray.push({
-            	componentname:data.componet_info_type,
-            	domid: data.props.anchor_name
-            });
-            jsArray.push(nameMap[data.componet_info_type]+".js");
-            cssArray.push(nameMap[data.componet_info_type]+".css");
+            componentHtml += await this.fetch("component/components/"+nameMap[data.componet_info_type]);
+            //componentHtml += await this.fetch("/component/"+data.componet_info_type+".html");
+            if(_array.indexOf(data.componet_info_type) <0){
+                compArray.push({
+                    componentname:data.componet_info_type,
+                    domid: data.props.anchor_name
+                });
+
+                jsArray.push(nameMap[data.componet_info_type]+".js");
+                cssArray.push(nameMap[data.componet_info_type]+".css");
+                _array.push(data.componet_info_type);
+            }
+            
         }
+
         that.assign('compArray',JSON.stringify(compArray));
         that.assign('jsArray',jsArray.join(","));
         that.assign('cssArray',cssArray.join(","));
@@ -83,4 +90,9 @@ export default class extends Base {
         return this.display("index");
     }
     
+    //浏览器
+    async c2Action(){
+
+        return this.display();
+    }
 }

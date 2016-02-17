@@ -4,12 +4,21 @@
   "version": "1.0.0",
   "scripts": {
     "start": "node www/development.js",
-    "compile": "babel --loose all --optional runtime --stage 0 --modules common src/ --out-dir app/ --retain-lines",
+    "compile": "babel --presets es2015-loose,stage-1 --plugins transform-runtime src/ --out-dir app/ --retain-lines",
     "watch-compile": "node -e \"console.log('<npm run watch-compile> no longer need, use <npm start> command direct.');console.log();\"",
     "watch": "npm run watch-compile"
   },
   "dependencies": {
     "babel-runtime": "6.x.x",
+    "nunjucks": "^2.2.0",
+    "thinkjs": "2.1.x"
+  },
+  "devDependencies": {
+    "babel-cli": "6.x.x",
+    "babel-core": "6.x.x",
+    "babel-plugin-transform-runtime": "6.x.x",
+    "babel-preset-es2015-loose": "6.x.x",
+    "babel-preset-stage-1": "6.x.x",
     "gulp": "^3.9.0",
     "gulp-autoprefixer": "^2.3.1",
     "gulp-babel": "^5.1.0",
@@ -17,6 +26,8 @@
     "gulp-concat": "^2.6.0",
     "gulp-load-plugins": "^0.10.0",
     "gulp-minify": "0.0.5",
+    "gulp-minify-css": "^1.2.3",
+    "gulp-notify": "^2.2.0",
     "gulp-plumber": "^1.0.1",
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^2.1.1",
@@ -24,17 +35,8 @@
     "gulp-sourcemaps": "^1.5.2",
     "gulp-uglify": "^1.5.1",
     "merge-stream": "^0.1.8",
-    "nunjucks": "^2.2.0",
-    "run-sequence": "^1.1.1",
-    "thinkjs": "2.1.x"
+    "run-sequence": "^1.1.1"
   },
-  "devDependencies": {
-    "babel-cli": "6.x.x",
-    "babel-core": "6.x.x",
-    "babel-loader": "^6.2.1",
-    "babel-plugin-transform-decorators": "^6.4.0",
-    "babel-plugin-transform-runtime": "6.x.x",
-    "babel-preset-es2015-loose": "6.x.x",
-    "babel-preset-stage-1": "6.x.x"
-  }
+  "repository": "",
+  "license": "MIT"
 }
