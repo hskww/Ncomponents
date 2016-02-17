@@ -108,14 +108,13 @@ $(function(){
 
 	$.ajax({
 		url:"/combo/index/gettpl?names="+componentsArray.join(","),
-		success:function (tpl) {
-
-			var tpls = $(tpl);
+		success:function (tplobj) {
+			var tplobj = JSON.parse(tplobj);
 			var content=$("#content").html("");
 			var html="";
 
 			$.each(pageData.components,function(){
-				var tplstr= tpls.filter("#"+this.componet_info_type).html();
+				var tplstr= tplobj[this.componet_info_type];
 				html = env.renderString(tplstr, {data:this.props});
 				
 		   		content.append(html);

@@ -103,6 +103,7 @@ export default class extends Base {
           "textComponent":"components_text"
         }
     let ischange =false;
+    let obj={};
     for(let i=0;i<path.length;i++){
       
       let name=path[i];
@@ -115,19 +116,21 @@ export default class extends Base {
         
         filepath="view/component/"+nameMap[name]+".html";
         
-        js1="<main id="+name+">"+fs.readFileSync(filepath,"utf-8")+"</main>"; 
+        js1=fs.readFileSync(filepath,"utf-8"); 
         let stat=fs.statSync(filepath);
         lastModified = stat.mtime.getTime();
         think.cache(cachename,js1);
         think.cache(cachename+"lsmt",lastModified);
+        
       }
+      obj[name]=js1;
       if (lastModified > hlast) {
           ischange =true;
       }
-      content +=js1;
+      
     }
   
-    http.type('text/html');
+    http.type('text/plain');
   
   let expires = new Date();
   let maxage=60*60*24*30;
@@ -140,6 +143,8 @@ export default class extends Base {
         http.end();
         
     }else{
+     
+      content = JSON.stringify(obj);
       http.end(content);
     }
   }

@@ -3,7 +3,7 @@
     {% if data.more_url %}
     <div class="single" >
         <h2 style="color:{{data.font_color}}">{{ data.title }}</h2>
-        <div class="more"><a href="{{ data.more_url if data.more else "javascript:;"}}">{{ data.more_name if data.more_name else "更多"  }}</a></div>
+        <div class="more"><a href="{{ data.more_url if data.more_url else "javascript:;" }}">{{ data.more_name if data.more_name else "更多"  }}</a></div>
     </div>
     {% else %}
     <div class="align {{data.align}}" >
