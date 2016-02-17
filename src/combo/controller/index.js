@@ -31,19 +31,19 @@ export default class extends Base {
     	let reg=/^(.+)\..+$/g; 
     	let name=reg.exec(path[i])[1];
     	let cachename = name+"_"+etc;
-    	think.cache(cachename,null);
+    	
     	let js1= await think.cache(cachename);
     	lastModified = await think.cache(cachename+"lsmt");
-
+      
     	if(!js1){
-       // console.log("readfile");
+       
     		let filepath="";
     		if(etc == "js"){
     			filepath="www/static/js/components/"+name+"/main-min.js";
     		}else if(etc == "css"){
     			filepath="www/static/css/components/"+name+"/main.css";
     		}
-    		js1=fs.readFileSync(filepath,"utf-8"); 
+    		js1=fs.readFileSync(filepath,"utf-8").toString(); 
     		let stat=fs.statSync(filepath);
     		lastModified = stat.mtime.getTime();
     		think.cache(cachename,js1);
@@ -107,7 +107,7 @@ export default class extends Base {
       
       let name=path[i];
       let cachename = name+"_"+etc;
-      think.cache(cachename,null);
+      
       let js1= await think.cache(cachename);
       lastModified = await think.cache(cachename+"lsmt");
       if(!js1){
